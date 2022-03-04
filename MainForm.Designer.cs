@@ -19,26 +19,47 @@ namespace ShortTimeMemo
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox = new System.Windows.Forms.TextBox();
+            this.statusStrip = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusStrip.SuspendLayout();
             this.SuspendLayout();
             // 
-            // textBox1
+            // textBox
             // 
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox1.Location = new System.Drawing.Point(0, 0);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox1.Size = new System.Drawing.Size(384, 201);
-            this.textBox1.TabIndex = 0;
+            this.textBox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.textBox.Location = new System.Drawing.Point(0, 0);
+            this.textBox.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
+            this.textBox.Multiline = true;
+            this.textBox.Name = "textBox";
+            this.textBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBox.Size = new System.Drawing.Size(384, 201);
+            this.textBox.TabIndex = 0;
+            // 
+            // statusStrip
+            // 
+            this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel});
+            this.statusStrip.Location = new System.Drawing.Point(0, 176);
+            this.statusStrip.Name = "statusStrip";
+            this.statusStrip.Size = new System.Drawing.Size(384, 25);
+            this.statusStrip.TabIndex = 1;
+            this.statusStrip.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel
+            // 
+            this.toolStripStatusLabel.Font = new System.Drawing.Font("Yu Gothic UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.toolStripStatusLabel.Name = "toolStripStatusLabel";
+            this.toolStripStatusLabel.Size = new System.Drawing.Size(115, 20);
+            this.toolStripStatusLabel.Text = "----/--/-- --:--:--";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(384, 201);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.statusStrip);
+            this.Controls.Add(this.textBox);
             this.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
@@ -49,6 +70,8 @@ namespace ShortTimeMemo
             this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
+            this.statusStrip.ResumeLayout(false);
+            this.statusStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -56,7 +79,9 @@ namespace ShortTimeMemo
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox;
+        private System.Windows.Forms.StatusStrip statusStrip;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel;
     }
 }
 

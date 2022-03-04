@@ -1,11 +1,15 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Text;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace ShortTimeMemo
 {
     public partial class MainForm : Form
     {
+        public int height = 0;
+
         public MainForm()
         {
             InitializeComponent();
@@ -16,15 +20,32 @@ namespace ShortTimeMemo
             if (File.Exists("savedata"))
             {
                 StreamReader streamReader = new StreamReader("savedata");
-                textBox1.Text = streamReader.ReadToEnd();
+                textBox.Text = streamReader.ReadToEnd();
                 streamReader.Close();
+            }
+
+            Timer timer = new Timer();
+            timer.Interval = 100;
+            timer.Enabled = true;
+            timer.Tick += new EventHandler(Timer_Tick);
+        }
+
+        private void Timer_Tick(object sender, System.EventArgs e)
+        {
+            DateTime dateTime = DateTime.Now;
+            toolStripStatusLabel.Text = dateTime.ToString("yyyy/MM/dd HH:mm:ss");
+            if (height != Size.Height)
+            {
+                height = Size.Height;
+                int textWidth = textBox.Size.Width;
+                textBox.Size = new Size(textWidth, height - 64);
             }
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             StreamWriter streamWriter = new StreamWriter("savedata", false, Encoding.GetEncoding("UTF-8"));
-            streamWriter.Write(textBox1.Text);
+            streamWriter.Write(textBox.Text);
             streamWriter.Close();
         }
     }
