@@ -3,6 +3,8 @@ using System.IO;
 using System.Text;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Reflection;
+using System.Diagnostics;
 
 namespace ShortTimeMemo
 {
@@ -30,7 +32,7 @@ namespace ShortTimeMemo
             timer.Tick += new EventHandler(Timer_Tick);
         }
 
-        private void Timer_Tick(object sender, System.EventArgs e)
+        private void Timer_Tick(object sender, EventArgs e)
         {
             DateTime dateTime = DateTime.Now;
             toolStripStatusLabel.Text = dateTime.ToString("yyyy/MM/dd HH:mm:ss");
@@ -47,6 +49,29 @@ namespace ShortTimeMemo
             StreamWriter streamWriter = new StreamWriter("savedata", false, Encoding.GetEncoding("UTF-8"));
             streamWriter.Write(textBox.Text);
             streamWriter.Close();
+        }
+
+        private void cutMenuItem_Click(object sender, EventArgs e)
+        {
+            //
+        }
+
+        private void copyMenuItem_Click(object sender, EventArgs e)
+        {
+            //
+        }
+
+        private void pasteMenuItem_Click(object sender, EventArgs e)
+        {
+            //
+        }
+
+        private void versionMenuItem_Click(object sender, EventArgs e)
+        {
+            FileVersionInfo fileVersionInfo = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location);
+            string version = fileVersionInfo.FileVersion;
+            string copyright = fileVersionInfo.LegalCopyright;
+            MessageBox.Show(Text + "\nVersion " + version + "\n\n" + copyright + "\nLicensed under the MIT License");
         }
     }
 }

@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*
+Short Time Memo
+Copyright (c) 2022 Sora Arakawa
+Licensed under the MIT License
+*/
+
+using System;
 using System.Windows.Forms;
 
 namespace ShortTimeMemo
